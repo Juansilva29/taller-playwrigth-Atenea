@@ -1,0 +1,22 @@
+{
+  "name": "taller-playwrigth-atenea",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juansilva29/taller-playwrigth-Atenea.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juansilva29/taller-playwrigth-Atenea/issues"
+  },
+  "homepage": "https://github.com/Juansilva29/taller-playwrigth-Atenea#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.6.0"
+  }
+}

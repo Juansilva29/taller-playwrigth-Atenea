@@ -1,4 +1,4 @@
-import {Page, Locator} from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class RegisterPage {
     readonly page: Page;
@@ -19,23 +19,30 @@ export class RegisterPage {
         this.LoginButton = page.getByTestId('boton-login-header-signup');
     }
 
-    async visitRegisterPage(){
+    async visitRegisterPage() {
         await this.page.goto('http://localhost:3000/');
     }
 
-    async completeRegister(firstName: string, lastName: string, email: string, password: string){
+    async completeRegister(firstName: string, lastName: string, email: string, password: string) {
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);
         await this.emailInput.fill(email);
         await this.passwordInput.fill(password);
-    } 
+    }
 
-    async clickRegister(){
+    async completeRegisterUser(usuario: {nombre: string, apellido: string, email: string, password: string}) {
+        await this.firstNameInput.fill(usuario.nombre);
+        await this.lastNameInput.fill(usuario.apellido);
+        await this.emailInput.fill(usuario.email);
+        await this.passwordInput.fill(usuario.password);
+    }
+
+    async clickRegister() {
         await this.registerButton.click();
     }
 
-    async completeAndSubmitRegister(firstName: string, lastName: string, email: string, password: string){
-        await this.completeRegister(firstName, lastName, email, password);
+    async completeAndSubmitRegister(usuario: {nombre: string, apellido: string, email: string, password: string}) {
+        await this.completeRegister(usuario.nombre, usuario.apellido, usuario.email, usuario.password);
         await this.clickRegister();
     }
 }

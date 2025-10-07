@@ -1,0 +1,19 @@
+{
+    "usuarioValido": {
+        "nombre": "Juan ",
+        "apellido": "Silva",
+        "email": "JuanSilva@test.com",
+        "password": "Juan1234"
+    },
+    "usuarioInvalido": {
+        "nombre": "Pedro",
+        "apellido": "Perez",
+        "email": "PedroPerez@test.com",
+        "password": "Pedro1234"
+    },
+    "usuarioExistente":
+    {
+        "email": "Juan1759870556406@test.com",
+        "password": "Juan1234"
+    }
+}

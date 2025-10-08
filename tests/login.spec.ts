@@ -19,3 +19,17 @@ test('TC-1 verify login success', async ({ page }) => {
         await expect(dashboardPage.dashboardTitle).toBeVisible();
     });
 });
+
+test('TC-2 verify login from backend', async ({ page, request }) => {
+    const email = 'Juan' + Date.now().toString() + '@test.com';
+    TestData.usuarioValido.email = email;
+    const response = await request.post('http://localhost:6007/api/auth/signup', {
+    });
+
+    const responseBody = await response.json();
+    expect(response.status()).toBe(201);
+
+    await loginPage.completeAndSubmitLogin(TestData.usuarioExistente);
+    await expect(page.getByText('Inicio de sesión exitoso')).toBeVisible();
+    await expect(dashboardPage.dashboardTitle).toBeVisible();
+});

@@ -1,12 +1,15 @@
 import { test, expect, request } from '@playwright/test';
 import { RegisterPage } from '../pages/registerPage';
 import TestData from '../data/testData.json';
+import { BackendUtils } from '../utils/backendUtils';
 
 let registerPage: RegisterPage;
+let backendUtils: BackendUtils;
 
 test.beforeEach(async ({ page }) => {
   registerPage = new RegisterPage(page);
   await registerPage.visitRegisterPage();
+  backendUtils = new BackendUtils(page);
 });
 
 test('TC-1 verify visual elements in singup page', async ({ page }) => {
@@ -96,17 +99,15 @@ test('TC-7 verify register with take in count backend', async ({ page }) => {
 test('TC-8 verify register Api', async ({ page, request }) => {
   const email = 'Juan' + Date.now().toString() + '@test.com';
   TestData.usuarioValido.email = email;
-  const response = await request.post('http://localhost:6007/api/auth/signup', {
-    data: {
+  const data = {
       firstName: TestData.usuarioValido.nombre,
       lastName: TestData.usuarioValido.apellido,
-      email: 'Juan' + Date.now().toString() + '@test.com',
+      email: email,
       password: TestData.usuarioValido.password,
     }
-  });
-
-  const responseBody = await response.json();
-  expect(response.status()).toBe(201);
+  const responseBackend = await backendUtils.sendRequest('http://localhost:6007/api/auth/signup', data);
+  const responseBody = await responseBackend.json();
+  expect(responseBackend.status()).toBe(201);
   expect(responseBody).toHaveProperty('token');
   expect(responseBody).toHaveProperty('user');
   expect(responseBody.user).toEqual(expect.objectContaining({
@@ -142,7 +143,4 @@ test('TC-9 handle error with page.route', async ({ page, request }) => {
 
 });
 
-/*test('TC-10 verify register with backend utils', async ({ page }) => {
-    const email = 'Juan' + Date.now().toString() + '@test.com';
-    const jsonbody={}
-    });*/
+

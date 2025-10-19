@@ -37,6 +37,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'] // esta linea significa que los proyectos de chronium dependen de setup
     },
 
     {
@@ -48,6 +49,11 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+
+    {
+      name:'setup',
+      testMatch: /.*\.setup\.ts/
+    }
 
     /* Test against mobile viewports. */
     // {

@@ -11,9 +11,12 @@
         "email": "PedroPerez@test.com",
         "password": "Pedro1234"
     },
-    "usuarioExistente":
-    {
+    "usuarioExistente": {
         "email": "Juan1759870556406@test.com",
         "password": "Juan1234"
+    },
+    "usuarioReceptor": {
+        "email": "juansilvatest@gmail.com",
+        "password": "Juanfelipe0720"
     }
 }

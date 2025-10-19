@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/dashboardPage';
 import TestData from '../data/testData.json';
-import { PassThrough } from 'stream';
 
 let loginPage: LoginPage;
 let dashboardPage: DashboardPage;
